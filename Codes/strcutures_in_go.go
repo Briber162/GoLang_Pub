@@ -40,3 +40,58 @@ func main() {
 	fmt.Println(MyCar.Make)
 
 }
+
+
+/* EMBEDED AND NESTED STRUCTS */
+
+package main
+
+import "fmt"
+
+// EMBEDEDD STRUCTS
+type car struct {
+	model string
+	make  string
+}
+
+type truck struct {
+	tyres int
+	car
+}
+
+//NESTED STRUCT
+type bird struct {
+	wings int
+	name  string
+}
+
+type crow struct {
+	myBird bird
+	color  string
+}
+
+func main() {
+	myTruck := truck{
+		tyres: 8,
+		car: car{
+			model: "GT",
+			make:  "1987",
+		},
+	}
+	fmt.Println(myTruck.model)
+
+	myC := crow{
+		color: "black",
+		myBird: bird{
+			wings: 2,
+			name:  "CROW",
+		},
+	}
+
+	fmt.Println(myC.color, myC.myBird.name)
+
+}
+
+
+
+
